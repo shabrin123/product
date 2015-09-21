@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-ruby '2.0.0'
+#ruby '2.0.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -47,3 +47,5 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'will_paginate'
+gem 'ransack'

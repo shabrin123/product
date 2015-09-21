@@ -4,7 +4,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @search = Product.search(params[:query] || {})
+    @search.build_condition if @search.conditions.empty?
+    @search.build_sort if @search.sorts.empty?
+    @products = @search.result.paginate(:per_page => 15, :page => params[:page]).order("updated_at desc")
+  #  @products = Product.all
   end
 
   # GET /products/1

@@ -4,7 +4,11 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    @search = Category.search(params[:query] || {})
+    @search.build_condition if @search.conditions.empty?
+    @search.build_sort if @search.sorts.empty?
+    @categories = @search.result.paginate(:per_page => 15, :page => params[:page]).order("updated_at desc")
+  #  @categories = Category.all
   end
 
   # GET /categories/1
@@ -62,7 +66,11 @@ class CategoriesController < ApplicationController
   end
   
   def category_product_list
-     @products=@category.products
+    @search = @category.products.search(params[:query] || {})
+    @search.build_condition if @search.conditions.empty?
+    @search.build_sort if @search.sorts.empty?
+    @products = @search.result.paginate(:per_page => 15, :page => params[:page]).order("updated_at desc")     
+   #  @products=@category.products
       render :template => "products/index"
   end
 

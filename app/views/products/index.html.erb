@@ -1,4 +1,14 @@
 <%- model_class = Product -%>
+<div class="nav-head">Search</div>
+              <%= form_tag products_path ,:method => "get",:html => { :class => 'form-horizontal' }  do |f|%>
+                 <div class="right-column">
+                  <%= text_field_tag 'query[title_cont]',(params[:query] and params[:query][:title_cont]),class: 'text_field_search',placeholder:"Category Title" %>
+                 </div>
+                 <div class="functions pull-right">
+                  <%= submit_tag "Search",class: 'btn btn-primary' %>
+                </div>
+<%end%>
+
 <div class="page-header">
 	<h1><%= t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
@@ -37,3 +47,4 @@
 <%= link_to t('.new', :default => t("helpers.links.new")),
 new_product_path,
 :class => 'btn btn-primary' %>
+ <%= will_paginate @products,{:params=> params} %>
