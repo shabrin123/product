@@ -8,10 +8,9 @@ default: &default
   adapter: postgresql
   pool: 5
   timeout: 5000
-  database: productdemo
-  username: postgres
-  password: postgres
-  host: localhost
+  debase: product
+  username: ruby-getting-started
+  password: <%= ENV['RUBY-GETTING-STARTED_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
