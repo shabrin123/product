@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta/>
+		<meta/>
+		<meta/>
+		<title> Product Demo </title>
+		<%= csrf_meta_tags %>
+		<%= stylesheet_link_tag "application", :media => "all" %>
+ <%= javascript_include_tag "application" %>
+	</head>
+	<body>
+
+				<div class="navbar navbar-fluid-top">
+					<div class="navbar-inner">
+						<div class="container-fluid">
+							<a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a>
+							<div class="container nav-collapse">
+
+								<div class="navbar-form navbar-right">
+									<div class="form-group">
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 side hidden-sm">
+
+					<div class="container-fluid">
+						<div class='row-fluid'>
+
+							<div class="span3">
+								<div class="sidebar sidebar-nav">
+									<div class="nav-head">
+										Menu
+									</div>
+									<a href="<%= categories_path%>" class="list-group-item active"> <span class="glyphicon glyphicon-file"></span> Categories </a>
+									<a href="<%= products_path%>"   class="list-group-item"> <span class="glyphicon glyphicon-music"></span> Products</a>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 main">
+
+					<div class="container-fluid span well">
+						<div class='row-fluid'>
+							<div class="span9">
+								<%= bootstrap_flash %>
+								<%= yield %>
+							</div>
+						</div>
+					</div>
+			
+	</body>
+</html>
